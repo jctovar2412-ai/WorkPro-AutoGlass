@@ -415,52 +415,106 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Service 1 -->
-                    <div class="bg-brand-card rounded-xl p-8 border border-[#222] card-hover group fade-in-up">
-                        <i data-lucide="rectangle-horizontal" class="w-10 h-10 text-brand-gold mb-6 group-hover:scale-110 transition-transform"></i>
-                        <h3 class="text-xl font-semibold text-white mb-3">Windshield Replacement</h3>
-                        <p class="text-sm mb-6 h-16 text-brand-gray">Complete removal and installation with OEM-quality glass. Same-day service available.</p>
-                        <a href="#quote-form" class="text-brand-gold text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    <!-- Service 1: Windshield Replacement -->
+                    <div class="bg-brand-card rounded-xl border border-[#222] card-hover group fade-in-up overflow-hidden shadow-xl flex flex-col">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="Imagenes/Servicio1_Windshield.jpg" alt="Windshield Replacement" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-4 left-4 w-10 h-10 bg-black/80 rounded-lg flex items-center justify-center border border-brand-gold/40 shadow-lg backdrop-blur-sm">
+                                <i data-lucide="rectangle-horizontal" class="w-5 h-5 text-brand-gold"></i>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-3">Windshield Replacement</h3>
+                                <p class="text-sm mb-6 text-brand-gray">Complete removal and installation with OEM-quality glass. Same-day service available.</p>
+                            </div>
+                            <a href="#quote-form" class="text-brand-gold text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                        </div>
                     </div>
 
-                    <!-- Service 2 -->
-                    <div class="bg-brand-card rounded-xl p-8 border border-[#222] card-hover group fade-in-up" style="transition-delay: 0.1s;">
-                        <i data-lucide="zap" class="w-10 h-10 text-brand-gold mb-6 group-hover:scale-110 transition-transform"></i>
-                        <h3 class="text-xl font-semibold text-white mb-3">Chip & Crack Repair</h3>
-                        <p class="text-sm mb-6 h-16 text-brand-gray">Quick, affordable repairs that restore structural integrity and prevent further damage.</p>
-                        <a href="#quote-form" class="text-brand-gold text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    <!-- Service 2: Chip & Crack Repair -->
+                    <div class="bg-brand-card rounded-xl border border-[#222] card-hover group fade-in-up overflow-hidden shadow-xl flex flex-col" style="transition-delay: 0.1s;">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="Imagenes/Servicio2_ChipRepair.jpg" alt="Chip & Crack Repair" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-4 left-4 w-10 h-10 bg-black/80 rounded-lg flex items-center justify-center border border-brand-gold/40 shadow-lg backdrop-blur-sm">
+                                <i data-lucide="zap" class="w-5 h-5 text-brand-gold"></i>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-3">Chip & Crack Repair</h3>
+                                <p class="text-sm mb-6 text-brand-gray">Quick, affordable repairs that restore structural integrity and prevent further damage.</p>
+                            </div>
+                            <a href="#quote-form" class="text-brand-gold text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                        </div>
                     </div>
 
-                    <!-- Service 3 -->
-                    <div class="bg-brand-card rounded-xl p-8 border border-[#222] card-hover group fade-in-up" style="transition-delay: 0.2s;">
-                        <i data-lucide="scan-eye" class="w-10 h-10 text-brand-gold mb-6 group-hover:scale-110 transition-transform"></i>
-                        <h3 class="text-xl font-semibold text-white mb-3">ADAS Calibration</h3>
-                        <p class="text-sm mb-6 h-16 text-brand-gray">Precision recalibration of forward-facing cameras, radar, and lane-departure systems.</p>
-                        <a href="#quote-form" class="text-brand-gold text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    <!-- Service 3: ADAS Calibration -->
+                    <div class="bg-brand-card rounded-xl border border-[#222] card-hover group fade-in-up overflow-hidden shadow-xl flex flex-col" style="transition-delay: 0.2s;">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="Imagenes/Servicio3_ADAS.jpg" alt="ADAS Calibration" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-4 left-4 w-10 h-10 bg-black/80 rounded-lg flex items-center justify-center border border-brand-gold/40 shadow-lg backdrop-blur-sm">
+                                <i data-lucide="scan-eye" class="w-5 h-5 text-brand-gold"></i>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-3">ADAS Calibration</h3>
+                                <p class="text-sm mb-6 text-brand-gray">Precision recalibration of forward-facing cameras, radar, and lane-departure systems.</p>
+                            </div>
+                            <a href="#quote-form" class="text-brand-gold text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                        </div>
                     </div>
 
-                    <!-- Service 4 -->
-                    <div id="fleets" class="bg-brand-card rounded-xl p-8 border border-[#222] card-hover group fade-in-up" style="transition-delay: 0.3s;">
-                        <i data-lucide="truck" class="w-10 h-10 text-brand-gold mb-6 group-hover:scale-110 transition-transform"></i>
-                        <h3 class="text-xl font-semibold text-white mb-3">Fleet & Heavy Equipment</h3>
-                        <p class="text-sm mb-6 h-16 text-brand-gray">Volume pricing and priority scheduling for commercial fleets and construction machinery.</p>
-                        <a href="#quote-form" class="text-brand-gold text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    <!-- Service 4: Fleet & Heavy Equipment -->
+                    <div id="fleets" class="bg-brand-card rounded-xl border border-[#222] card-hover group fade-in-up overflow-hidden shadow-xl flex flex-col" style="transition-delay: 0.3s;">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="Imagenes/Servicio4_Fleet.jpg" alt="Fleet & Heavy Equipment" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-4 left-4 w-10 h-10 bg-black/80 rounded-lg flex items-center justify-center border border-brand-gold/40 shadow-lg backdrop-blur-sm">
+                                <i data-lucide="truck" class="w-5 h-5 text-brand-gold"></i>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-3">Fleet & Heavy Equipment</h3>
+                                <p class="text-sm mb-6 text-brand-gray">Volume pricing and priority scheduling for commercial fleets and construction machinery.</p>
+                            </div>
+                            <a href="#quote-form" class="text-brand-gold text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                        </div>
                     </div>
 
-                    <!-- Service 5 -->
-                    <div class="bg-brand-card rounded-xl p-8 border border-[#222] card-hover group fade-in-up" style="transition-delay: 0.4s;">
-                        <i data-lucide="sun" class="w-10 h-10 text-brand-gold mb-6 group-hover:scale-110 transition-transform"></i>
-                        <h3 class="text-xl font-semibold text-white mb-3">Sunroof & Panoramic</h3>
-                        <p class="text-sm mb-6 h-16 text-brand-gray">Expert replacement of sunroofs, moonroofs, and panoramic glass panels.</p>
-                        <a href="#quote-form" class="text-brand-gold text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    <!-- Service 5: Sunroof & Panoramic -->
+                    <div class="bg-brand-card rounded-xl border border-[#222] card-hover group fade-in-up overflow-hidden shadow-xl flex flex-col" style="transition-delay: 0.4s;">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="Imagenes/Servicio5_Sunroof.jpg" alt="Sunroof & Panoramic" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-4 left-4 w-10 h-10 bg-black/80 rounded-lg flex items-center justify-center border border-brand-gold/40 shadow-lg backdrop-blur-sm">
+                                <i data-lucide="sun" class="w-5 h-5 text-brand-gold"></i>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-3">Sunroof & Panoramic</h3>
+                                <p class="text-sm mb-6 text-brand-gray">Expert replacement of sunroofs, moonroofs, and panoramic glass panels.</p>
+                            </div>
+                            <a href="#quote-form" class="text-brand-gold text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                        </div>
                     </div>
 
-                    <!-- Service 6 -->
-                    <div class="bg-brand-card rounded-xl p-8 border border-[#222] card-hover group fade-in-up" style="transition-delay: 0.5s;">
-                        <i data-lucide="car" class="w-10 h-10 text-brand-gold mb-6 group-hover:scale-110 transition-transform"></i>
-                        <h3 class="text-xl font-semibold text-white mb-3">Classic & Specialty</h3>
-                        <p class="text-sm mb-6 h-16 text-brand-gray">Hard-to-find glass sourced and installed for vintage, luxury, and exotic vehicles.</p>
-                        <a href="#quote-form" class="text-brand-gold text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    <!-- Service 6: Classic & Specialty -->
+                    <div class="bg-brand-card rounded-xl border border-[#222] card-hover group fade-in-up overflow-hidden shadow-xl flex flex-col" style="transition-delay: 0.5s;">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="Imagenes/Servicio6_Classic.jpg" alt="Classic & Specialty" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-4 left-4 w-10 h-10 bg-black/80 rounded-lg flex items-center justify-center border border-brand-gold/40 shadow-lg backdrop-blur-sm">
+                                <i data-lucide="car" class="w-5 h-5 text-brand-gold"></i>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-3">Classic & Specialty</h3>
+                                <p class="text-sm mb-6 text-brand-gray">Hard-to-find glass sourced and installed for vintage, luxury, and exotic vehicles.</p>
+                            </div>
+                            <a href="#quote-form" class="text-brand-gold text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
