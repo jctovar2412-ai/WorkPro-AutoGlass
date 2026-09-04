@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkPro AutoGlass - Premium Mobile Windshield Replacement & Repair</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-black': '#0D0D0D',
+            'brand-card': '#1A1A1A',
+            'brand-gold': '#D4AF37',
+            'brand-gold-dark': '#C9A24B',
+            'brand-gold-light': '#E8C77A',
+            'brand-gray': '#9CA3A8',
+            'brand-footer': '#0A0A0A',
+          },
+          fontFamily: {
+            'heading': ['Montserrat', 'sans-serif'],
+            'body': ['Inter', 'sans-serif'],
+          },
+          backgroundImage: {
+            'hero-gradient': 'linear-gradient(rgba(13,13,13,0.7), rgba(13,13,13,0.95)), url("Imagenes/Fondo Work.jpg")',
+          }
+        }
+      }
+    }
+    </script>
+    
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #0D0D0D;
+            color: #9CA3A8;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: #FFFFFF;
+        }
+
+        .text-gradient-gold {
+            background: linear-gradient(to right, #D4AF37, #FFF5C3, #D4AF37, #C9A24B);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shine 4s linear infinite;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,1));
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .text-shadow-strong {
+            text-shadow: 2px 2px 4px rgba(0,0,0,1), 0 0 15px rgba(0,0,0,0.9);
+        }
+
+        .bg-gradient-gold {
+            background: linear-gradient(to right, #D4AF37, #C9A24B);
+            color: #000000;
+            transition: all 0.3s ease;
+        }
+
+        .bg-gradient-gold:hover {
+            background: linear-gradient(to right, #E8C77A, #D4AF37);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            border-color: #D4AF37;
+            box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Animations */
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+
+        .pulse-btn {
+            animation: pulse-gold 2s infinite;
+        }
+
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(57, 255, 20, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(57, 255, 20, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(57, 255, 20, 0); }
+        }
+
+        .pulse-green-btn {
+            animation: pulse-green 2s infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100%;
+        }
+
+        .marquee-content {
+            display: inline-flex;
+            animation: marquee 30s linear infinite;
+        }
+        
+        .marquee-content:hover {
+            animation-play-state: paused;
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Form Inputs */
+        .form-input {
+            background-color: #0D0D0D;
+            border: 1px solid #333;
+            color: #FFF;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #D4AF37;
+        }
+
+        /* Accordion */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+        }
+
+        /* Header Scroll State */
+        .header-scrolled {
+            background-color: rgba(13, 13, 13, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- 1. TOP BAR & STICKY HEADER -->
+    <!-- Top Bar -->
+    <div class="hidden md:flex justify-between items-center px-8 py-2 bg-brand-black border-b border-[#222] text-xs">
+        <div class="flex items-center gap-6">
+            <span class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-brand-gold"></i> Mon-Sat: 7AM - 7PM</span>
+            <span class="flex items-center gap-2 bg-brand-card px-3 py-1 rounded-full text-brand-gold border border-brand-gold/30"><i data-lucide="truck" class="w-3 h-3"></i> Free Mobile Service</span>
+        </div>
+        <div class="flex items-center gap-6">
+            <a href="https://wa.me/18017503664" target="_blank" class="flex items-center gap-2 hover:text-brand-gold transition"><i data-lucide="message-circle" class="w-4 h-4 text-green-500"></i> +1 (801) 750-3664</a>
+            <a href="tel:+18017503664" class="flex items-center gap-2 font-bold hover:text-brand-gold transition"><i data-lucide="phone" class="w-4 h-4 text-brand-gold"></i> (801) 750-3664</a>
+        </div>
+    </div>
+
+    <!-- Sticky Header -->
+    <header id="main-header" class="fixed w-full z-50 transition-all duration-300 py-1 bg-brand-black border-b border-[#222]">
+        <div class="container mx-auto px-4 md:px-8 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="flex-shrink-0 relative z-50 -ml-2">
+                <img src="Imagenes/Logo workproautoglass.png" alt="WorkPro AutoGlass" class="h-16 md:h-24 lg:h-28 object-contain scale-110 origin-left" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCAyMDAgNDAiPjx0ZXh0IHk9IjI1IiBmb250LWZhbWlseT0iTW9udHNlcnJhdCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI0Q0QUYzNyI+V29ya1BybyBBdXRvR2xhc3M8L3RleHQ+PC9zdmc+'">
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center gap-8 font-medium">
+                <a href="#services" class="hover:text-brand-gold transition">Services</a>
+                <a href="#mobile-service" class="hover:text-brand-gold transition">Mobile Service</a>
+                <a href="#fleets" class="hover:text-brand-gold transition">Fleets</a>
+                <a href="#reviews" class="hover:text-brand-gold transition">Reviews</a>
+                <a href="#faq" class="hover:text-brand-gold transition">FAQ</a>
+            </nav>
+
+            <!-- CTA Desktop -->
+            <div class="hidden lg:block">
+                <a href="#quote-form" class="bg-gradient-gold px-6 py-2.5 rounded-lg font-semibold text-sm inline-flex items-center gap-2">
+                    Get a Free Quote
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="lg:hidden relative z-50 text-white p-2">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 bg-brand-black/95 backdrop-blur-md z-40 transform translate-x-full transition-transform duration-300 flex flex-col justify-center items-center gap-8 text-xl font-heading">
+            <a href="#services" class="mobile-link hover:text-brand-gold transition">Services</a>
+            <a href="#mobile-service" class="mobile-link hover:text-brand-gold transition">Mobile Service</a>
+            <a href="#fleets" class="mobile-link hover:text-brand-gold transition">Fleets</a>
+            <a href="#reviews" class="mobile-link hover:text-brand-gold transition">Reviews</a>
+            <a href="#faq" class="mobile-link hover:text-brand-gold transition">FAQ</a>
+            <a href="#quote-form" class="mobile-link bg-gradient-gold px-8 py-3 rounded-xl font-bold mt-4 text-black">Get a Quote</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- 2. HERO SECTION -->
+        <section class="relative min-h-[80vh] flex items-center pt-32 pb-24 bg-hero-gradient bg-cover bg-center bg-no-repeat">
+            <div class="container mx-auto px-4 md:px-8 flex flex-col lg:flex-row items-center justify-between gap-12">
+                <!-- Hero Content -->
+                <div class="fade-in-up max-w-3xl lg:w-2/3">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-brand-gold/60 bg-black/60 text-brand-gold text-xs font-bold tracking-wider mb-6 text-shadow-strong shadow-[0_0_10px_rgba(212,175,55,0.2)]">
+                        <i data-lucide="award" class="w-4 h-4"></i>
+                        PREMIUM AUTO GLASS SERVICES
+                    </div>
+                    
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 text-shadow-strong">
+                        Mobile Windshield Replacement & Repair
+                    </h1>
+                    
+                    <h2 class="text-2xl md:text-3xl font-bold text-gradient-gold mb-6">
+                        OEM Quality & ADAS Calibration
+                    </h2>
+                    
+                    <p class="text-lg md:text-xl text-gray-100 font-medium mb-10 max-w-xl text-shadow-strong">
+                        We come to your home, office, or roadside location at no extra cost. Lifetime warranty and direct insurance billing.
+                    </p>
+                    
+                    <!-- Trust Badges -->
+                    <div class="flex flex-wrap items-center gap-6 text-sm font-medium text-white/90">
+                        <div class="flex items-center gap-2">
+                            <div class="flex text-brand-gold"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+                            <span>4.9/5 Google</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="shield-check" class="w-5 h-5 text-brand-gold"></i>
+                            <span>AGRSS Certified</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-brand-gold"></i>
+                            <span>Lifetime Warranty</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Buttons (Right Side) -->
+                <div class="fade-in-up lg:w-1/3 flex justify-end w-full" style="transition-delay: 0.2s;">
+                    <div class="bg-black/40 backdrop-blur-md p-8 rounded-2xl border border-brand-gold/30 shadow-2xl flex flex-col gap-5 w-full max-w-sm">
+                        <div class="text-center mb-2">
+                            <span class="text-brand-gold font-bold tracking-widest text-xs uppercase mb-2 block">Fast Response</span>
+                            <h3 class="text-white text-2xl font-bold text-shadow-strong">Need Help Now?</h3>
+                        </div>
+                        
+                        <a href="tel:+18017503664" class="w-full bg-[#CCFF00] hover:bg-[#b8e600] text-black font-bold py-4 px-4 rounded-xl text-lg flex items-center justify-center gap-3 hover:scale-[1.02] transition-all shadow-[0_0_20px_rgba(204,255,0,0.5)]">
+                            <i data-lucide="phone" class="w-6 h-6"></i>
+                            Call (801) 750-3664
+                        </a>
+                        
+                        <a href="https://wa.me/18017503664" target="_blank" class="w-full bg-[#1A1A1A] border border-[#333] hover:border-[#25D366] text-white font-bold py-4 px-4 rounded-xl text-lg flex items-center justify-center gap-3 hover:scale-[1.02] transition-all group shadow-lg">
+                            <i data-lucide="message-circle" class="w-6 h-6 text-[#25D366] group-hover:scale-110 transition-transform"></i>
+                            WhatsApp Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2.5 QUOTE FORM SECTION -->
+        <section class="py-16 bg-[#0D0D0D] border-t border-[#222]">
+            <div class="container mx-auto px-4 md:px-8 flex justify-center">
+                <!-- Quote Form Card -->
+                <div id="quote-form" class="bg-brand-card p-6 md:p-8 rounded-2xl border border-brand-gold/30 shadow-2xl relative fade-in-up w-full max-w-2xl -mt-32 z-10">
+                    <div class="absolute -top-4 right-8 bg-brand-gold text-black text-xs font-bold px-4 py-1 rounded-full shadow-lg">
+                        Fast Response
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 text-center">Get Your Free Quote</h3>
+                    
+                    <form onsubmit="event.preventDefault(); alert('Thank you! We will contact you shortly.');" class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs text-brand-gray mb-1">Year</label>
+                                <select id="year-select" class="w-full form-input rounded-lg px-4 py-3 text-sm focus:ring-1 focus:ring-brand-gold" required>
+                                    <option value="" disabled selected>Select Year</option>
+                                    <!-- Populated via JS -->
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-brand-gray mb-1">Make</label>
+                                <input type="text" placeholder="e.g. Toyota" class="w-full form-input rounded-lg px-4 py-3 text-sm focus:ring-1 focus:ring-brand-gold" required>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs text-brand-gray mb-1">Model</label>
+                            <input type="text" placeholder="e.g. Camry" class="w-full form-input rounded-lg px-4 py-3 text-sm focus:ring-1 focus:ring-brand-gold" required>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs text-brand-gray mb-1">Damaged Glass</label>
+                            <select class="w-full form-input rounded-lg px-4 py-3 text-sm focus:ring-1 focus:ring-brand-gold" required>
+                                <option value="" disabled selected>Select Glass Type</option>
+                                <option value="windshield">Windshield</option>
+                                <option value="rear">Rear Window</option>
+                                <option value="side">Side Window</option>
+                                <option value="quarter">Quarter Glass</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs text-brand-gray mb-1">Phone / WhatsApp</label>
+                            <input type="tel" placeholder="(801) 750-3664" class="w-full form-input rounded-lg px-4 py-3 text-sm focus:ring-1 focus:ring-brand-gold" required>
+                        </div>
+
+                        <button type="submit" class="w-full bg-gradient-gold text-black font-bold py-4 rounded-xl text-lg mt-2 flex justify-center items-center gap-2 hover:scale-[1.02] transition-transform">
+                            Get an Instant Quote <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </button>
+                        
+                        <p class="text-center text-sm text-brand-gray mt-4">
+                            Or call us directly: <a href="tel:+18017503664" class="text-white font-bold hover:text-brand-gold transition">(801) 750-3664</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. COMPETITIVE ADVANTAGES (4 PILLARS) -->
+        <section class="py-20 border-t border-[#222]">
+            <div class="container mx-auto px-4 md:px-8">
+                <div class="text-center mb-16 fade-in-up">
+                    <h2 class="text-3xl md:text-4xl font-bold inline-block relative">
+                        Why Choose WorkPro AutoGlass?
+                        <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-brand-gold rounded"></div>
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Pillar 1 -->
+                    <div class="bg-brand-card rounded-xl p-8 border-t-2 border-brand-gold/50 border-transparent card-hover fade-in-up">
+                        <div class="w-14 h-14 bg-brand-black rounded-full flex items-center justify-center mb-6 border border-[#333]">
+                            <i data-lucide="truck" class="w-7 h-7 text-brand-gold"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Free Mobile Service</h3>
+                        <p class="text-sm leading-relaxed">Our certified technicians come to your home, office, or any location — completely free of charge.</p>
+                    </div>
+
+                    <!-- Pillar 2 -->
+                    <div class="bg-brand-card rounded-xl p-8 border-t-2 border-brand-gold/50 border-transparent card-hover fade-in-up" style="transition-delay: 0.1s;">
+                        <div class="w-14 h-14 bg-brand-black rounded-full flex items-center justify-center mb-6 border border-[#333]">
+                            <i data-lucide="camera" class="w-7 h-7 text-brand-gold"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">On-Site ADAS Calibration</h3>
+                        <p class="text-sm leading-relaxed">We recalibrate your vehicle's advanced safety cameras and sensors right on the spot after every replacement.</p>
+                    </div>
+
+                    <!-- Pillar 3 -->
+                    <div class="bg-brand-card rounded-xl p-8 border-t-2 border-brand-gold/50 border-transparent card-hover fade-in-up" style="transition-delay: 0.2s;">
+                        <div class="w-14 h-14 bg-brand-black rounded-full flex items-center justify-center mb-6 border border-[#333]">
+                            <i data-lucide="shield-check" class="w-7 h-7 text-brand-gold"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">OEM-Quality Glass</h3>
+                        <p class="text-sm leading-relaxed">We use only original-grade materials and fast-curing adhesives that meet or exceed manufacturer specifications.</p>
+                    </div>
+
+                    <!-- Pillar 4 -->
+                    <div class="bg-brand-card rounded-xl p-8 border-t-2 border-brand-gold/50 border-transparent card-hover fade-in-up" style="transition-delay: 0.3s;">
+                        <div class="w-14 h-14 bg-brand-black rounded-full flex items-center justify-center mb-6 border border-[#333]">
+                            <i data-lucide="file-check" class="w-7 h-7 text-brand-gold"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Insurance Handling</h3>
+                        <p class="text-sm leading-relaxed">We coordinate directly with all major insurance carriers so you don't have to deal with the paperwork.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. MAIN SERVICES GRID -->
+        <section id="services" class="py-20 bg-[#111]">
+            <div class="container mx-auto px-4 md:px-8">
+                <div class="mb-16 fade-in-up flex flex-col md:flex-row md:items-end justify-between gap-6">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
+                        <p class="max-w-2xl text-brand-gray">Comprehensive auto glass solutions for all vehicle makes and models, delivered with precision and care.</p>
+                    </div>
+                    <a href="#quote-form" class="text-brand-gold font-semibold hover:text-white transition flex items-center gap-2">Get a Quote <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Service 1 -->
+                    <div class="bg-brand-card rounded-xl p-8 border border-[#222] card-hover group fade-in-up">
+                        <i data-lucide="rectangle-horizontal" class="w-10 h-10 text-brand-gold mb-6 group-hover:scale-110 transition-transform"></i>
+                        <h3 class="text-xl font-semibold text-white mb-3">Windshield Replacement</h3>
+                        <p class="text-sm mb-6 h-16 text-brand-gray">Complete removal and installation with OEM-quality glass. Same-day service available.</p>
+                        <a href="#quote-form" class="text-brand-gold text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="bg-brand-card rounded-xl p-8 border border-[#222] card-hover group fade-in-up" style="transition-delay: 0.1s;">
+                        <i data-lucide="zap" class="w-10 h-10 text-brand-gold mb-6 group-hover:scale-110 transition-transform"></i>
+                        <h3 class="text-xl font-semibold text-white mb-3">Chip & Crack Repair</h3>
+                        <p class="text-sm mb-6 h-16 text-brand-gray">Quick, affordable repairs that restore structural integrity and prevent further damage.</p>
+                        <a href="#quote-form" class="text-brand-gold text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="bg-brand-card rounded-xl p-8 border border-[#222] card-hover group fade-in-up" style="transition-delay: 0.2s;">
+                        <i data-lucide="scan-eye" class="w-10 h-10 text-brand-gold mb-6 group-hover:scale-110 transition-transform"></i>
+                        <h3 class="text-xl font-semibold text-white mb-3">ADAS Calibration</h3>
+                        <p class="text-sm mb-6 h-16 text-brand-gray">Precision recalibration of forward-facing cameras, radar, and lane-departure systems.</p>
+                        <a href="#quote-form" class="text-brand-gold text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+
+                    <!-- Service 4 -->
+                    <div id="fleets" class="bg-brand-card rounded-xl p-8 border border-[#222] card-hover group fade-in-up" style="transition-delay: 0.3s;">
+                        <i data-lucide="truck" class="w-10 h-10 text-brand-gold mb-6 group-hover:scale-110 transition-transform"></i>
+                        <h3 class="text-xl font-semibold text-white mb-3">Fleet & Heavy Equipment</h3>
+                        <p class="text-sm mb-6 h-16 text-brand-gray">Volume pricing and priority scheduling for commercial fleets and construction machinery.</p>
+                        <a href="#quote-form" class="text-brand-gold text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+
+                    <!-- Service 5 -->
+                    <div class="bg-brand-card rounded-xl p-8 border border-[#222] card-hover group fade-in-up" style="transition-delay: 0.4s;">
+                        <i data-lucide="sun" class="w-10 h-10 text-brand-gold mb-6 group-hover:scale-110 transition-transform"></i>
+                        <h3 class="text-xl font-semibold text-white mb-3">Sunroof & Panoramic</h3>
+                        <p class="text-sm mb-6 h-16 text-brand-gray">Expert replacement of sunroofs, moonroofs, and panoramic glass panels.</p>
+                        <a href="#quote-form" class="text-brand-gold text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+
+                    <!-- Service 6 -->
+                    <div class="bg-brand-card rounded-xl p-8 border border-[#222] card-hover group fade-in-up" style="transition-delay: 0.5s;">
+                        <i data-lucide="car" class="w-10 h-10 text-brand-gold mb-6 group-hover:scale-110 transition-transform"></i>
+                        <h3 class="text-xl font-semibold text-white mb-3">Classic & Specialty</h3>
+                        <p class="text-sm mb-6 h-16 text-brand-gray">Hard-to-find glass sourced and installed for vintage, luxury, and exotic vehicles.</p>
+                        <a href="#quote-form" class="text-brand-gold text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. HOW IT WORKS (4-STEP PROCESS) -->
+        <section id="mobile-service" class="py-20 border-t border-[#222]">
+            <div class="container mx-auto px-4 md:px-8">
+                <div class="text-center mb-16 fade-in-up">
+                    <h2 class="text-3xl md:text-4xl font-bold inline-block relative">
+                        How It Works
+                        <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-brand-gold rounded"></div>
+                    </h2>
+                    <p class="mt-6 text-brand-gray max-w-2xl mx-auto">Getting your auto glass replaced or repaired is simple, fast, and convenient.</p>
+                </div>
+
+                <div class="relative max-w-5xl mx-auto fade-in-up">
+                    <!-- Desktop Connecting Line -->
+                    <div class="hidden lg:block absolute top-10 left-[10%] right-[10%] h-0.5 bg-[#333] z-0">
+                        <div class="absolute top-0 left-0 h-full bg-brand-gold w-full origin-left transform scale-x-0 transition-transform duration-1000" id="timeline-line"></div>
+                    </div>
+
+                    <div class="flex flex-col lg:flex-row justify-between relative z-10 gap-8 lg:gap-4">
+                        <!-- Step 1 -->
+                        <div class="flex flex-row lg:flex-col items-center lg:text-center gap-6 lg:gap-4 lg:w-1/4 group">
+                            <div class="flex-shrink-0 w-20 h-20 rounded-full bg-brand-black border-2 border-brand-gold flex items-center justify-center text-2xl font-bold text-brand-gold group-hover:bg-brand-gold group-hover:text-black transition-colors shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+                                1
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2">Schedule</h3>
+                                <p class="text-sm text-brand-gray">Book online or give us a call. We'll confirm your appointment within minutes.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="flex flex-row lg:flex-col items-center lg:text-center gap-6 lg:gap-4 lg:w-1/4 group">
+                            <div class="flex-shrink-0 w-20 h-20 rounded-full bg-brand-black border-2 border-brand-gold flex items-center justify-center text-2xl font-bold text-brand-gold group-hover:bg-brand-gold group-hover:text-black transition-colors shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+                                2
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2">We Come to You</h3>
+                                <p class="text-sm text-brand-gray">Our fully-equipped mobile unit arrives at your preferred location.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="flex flex-row lg:flex-col items-center lg:text-center gap-6 lg:gap-4 lg:w-1/4 group">
+                            <div class="flex-shrink-0 w-20 h-20 rounded-full bg-brand-black border-2 border-brand-gold flex items-center justify-center text-2xl font-bold text-brand-gold group-hover:bg-brand-gold group-hover:text-black transition-colors shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+                                3
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2">Expert Installation</h3>
+                                <p class="text-sm text-brand-gray">Certified technicians install your glass and calibrate all sensors.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="flex flex-row lg:flex-col items-center lg:text-center gap-6 lg:gap-4 lg:w-1/4 group">
+                            <div class="flex-shrink-0 w-20 h-20 rounded-full bg-brand-black border-2 border-brand-gold flex items-center justify-center text-2xl font-bold text-brand-gold group-hover:bg-brand-gold group-hover:text-black transition-colors shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+                                4
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2">Drive Safely</h3>
+                                <p class="text-sm text-brand-gray">You're back on the road with a lifetime warranty on every job.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. INSURANCE & DEDUCTIBLE SAVINGS BANNER -->
+        <section class="bg-gradient-to-r from-[#1A1A1A] to-[#0A0A0A] border-y border-[#333] overflow-hidden">
+            <div class="container mx-auto px-4 md:px-8 py-16 grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in-up">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green-500/40 bg-green-500/10 text-green-400 text-xs font-bold tracking-wider mb-4">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i>
+                        APPROVED BY ALL CARRIERS
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">We Work With All Major Insurance Providers</h2>
+                    <p class="text-lg text-brand-gray mb-8">
+                        Don't worry about the paperwork. We handle your insurance claim from start to finish, and in most cases, your deductible is fully covered at <strong>zero cost to you</strong>.
+                    </p>
+                    <button class="bg-gradient-gold text-black font-bold px-8 py-3 rounded-xl inline-flex items-center gap-2 hover:scale-105 transition-transform shadow-lg">
+                        File a Claim Now <i data-lucide="file-text" class="w-5 h-5"></i>
+                    </button>
+                </div>
+
+                <div class="fade-in-up" style="transition-delay: 0.2s;">
+                    <!-- Marquee Container -->
+                    <div class="marquee-container py-4 relative">
+                        <!-- Fade masks -->
+                        <div class="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#1A1A1A] to-transparent z-10 pointer-events-none"></div>
+                        <div class="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#0A0A0A] to-transparent z-10 pointer-events-none"></div>
+                        
+                        <div class="marquee-content gap-6 items-center">
+                            <!-- Duplicate items to create infinite scroll effect -->
+                            <div class="px-6 py-4 bg-brand-black border border-[#333] rounded-lg text-white/70 font-bold text-xl tracking-wider">STATE FARM</div>
+                            <div class="px-6 py-4 bg-brand-black border border-[#333] rounded-lg text-white/70 font-bold text-xl tracking-wider">GEICO</div>
+                            <div class="px-6 py-4 bg-brand-black border border-[#333] rounded-lg text-white/70 font-bold text-xl tracking-wider">PROGRESSIVE</div>
+                            <div class="px-6 py-4 bg-brand-black border border-[#333] rounded-lg text-white/70 font-bold text-xl tracking-wider">ALLSTATE</div>
+                            <div class="px-6 py-4 bg-brand-black border border-[#333] rounded-lg text-white/70 font-bold text-xl tracking-wider">USAA</div>
+                            <div class="px-6 py-4 bg-brand-black border border-[#333] rounded-lg text-white/70 font-bold text-xl tracking-wider">FARMERS</div>
+                            
+                            <!-- Repeat -->
+                            <div class="px-6 py-4 bg-brand-black border border-[#333] rounded-lg text-white/70 font-bold text-xl tracking-wider">STATE FARM</div>
+                            <div class="px-6 py-4 bg-brand-black border border-[#333] rounded-lg text-white/70 font-bold text-xl tracking-wider">GEICO</div>
+                            <div class="px-6 py-4 bg-brand-black border border-[#333] rounded-lg text-white/70 font-bold text-xl tracking-wider">PROGRESSIVE</div>
+                            <div class="px-6 py-4 bg-brand-black border border-[#333] rounded-lg text-white/70 font-bold text-xl tracking-wider">ALLSTATE</div>
+                            <div class="px-6 py-4 bg-brand-black border border-[#333] rounded-lg text-white/70 font-bold text-xl tracking-wider">USAA</div>
+                            <div class="px-6 py-4 bg-brand-black border border-[#333] rounded-lg text-white/70 font-bold text-xl tracking-wider">FARMERS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. SOCIAL PROOF & TESTIMONIALS -->
+        <section id="reviews" class="py-20 bg-[#0D0D0D]">
+            <div class="container mx-auto px-4 md:px-8">
+                <div class="text-center mb-16 fade-in-up">
+                    <div class="flex justify-center mb-4">
+                        <i data-lucide="star" class="w-8 h-8 text-brand-gold fill-current"></i>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">What Our Customers Say</h2>
+                    
+                    <div class="flex flex-col items-center justify-center mt-6">
+                        <div class="text-5xl font-extrabold text-white mb-2">4.9</div>
+                        <div class="flex text-brand-gold mb-2">
+                            <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                            <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                            <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                            <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                            <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                        </div>
+                        <p class="text-brand-gray text-sm">Based on 200+ Google Reviews</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 fade-in-up">
+                    <!-- Review 1 -->
+                    <div class="bg-brand-card p-8 rounded-xl border-l-4 border-brand-gold border-y border-r border-[#222]">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex text-brand-gold gap-0.5">
+                                <i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i>
+                            </div>
+                            <div class="w-6 h-6 bg-white rounded-full flex items-center justify-center font-bold text-[#4285F4] text-xs">G</div>
+                        </div>
+                        <p class="text-white italic text-sm mb-6 leading-relaxed">"WorkPro replaced my Tesla Model 3 windshield and recalibrated the Autopilot cameras — all in my driveway. Incredible service and quality!"</p>
+                        <div class="mt-auto">
+                            <p class="font-bold text-white">Michael R.</p>
+                            <p class="text-xs text-brand-gray">2 weeks ago</p>
+                        </div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="bg-brand-card p-8 rounded-xl border-l-4 border-brand-gold border-y border-r border-[#222]">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex text-brand-gold gap-0.5">
+                                <i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i>
+                            </div>
+                            <div class="w-6 h-6 bg-white rounded-full flex items-center justify-center font-bold text-[#4285F4] text-xs">G</div>
+                        </div>
+                        <p class="text-white italic text-sm mb-6 leading-relaxed">"They handled everything with my insurance company. I paid absolutely nothing out of pocket. Fast, professional, and the glass looks perfect."</p>
+                        <div class="mt-auto">
+                            <p class="font-bold text-white">Sarah T.</p>
+                            <p class="text-xs text-brand-gray">1 month ago</p>
+                        </div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="bg-brand-card p-8 rounded-xl border-l-4 border-brand-gold border-y border-r border-[#222]">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex text-brand-gold gap-0.5">
+                                <i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i>
+                            </div>
+                            <div class="w-6 h-6 bg-white rounded-full flex items-center justify-center font-bold text-[#4285F4] text-xs">G</div>
+                        </div>
+                        <p class="text-white italic text-sm mb-6 leading-relaxed">"Best auto glass company in Utah. They came to my office parking lot, replaced my windshield during my lunch break, and even cleaned my car. Highly recommend!"</p>
+                        <div class="mt-auto">
+                            <p class="font-bold text-white">James L.</p>
+                            <p class="text-xs text-brand-gray">3 weeks ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. FAQ ACCORDION -->
+        <section id="faq" class="py-20 border-t border-[#222]">
+            <div class="container mx-auto px-4 md:px-8 max-w-4xl">
+                <div class="text-center mb-12 fade-in-up">
+                    <h2 class="text-3xl md:text-4xl font-bold">Frequently Asked Questions</h2>
+                </div>
+
+                <div class="space-y-4 fade-in-up">
+                    <!-- FAQ 1 -->
+                    <div class="bg-brand-card rounded-xl border-l-2 border-brand-gold border-y border-r border-[#222] overflow-hidden">
+                        <button class="faq-btn w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none">
+                            <span class="font-bold text-white pr-4">Is there really no extra cost for mobile service?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-brand-gold flex-shrink-0 transition-transform duration-300"></i>
+                        </button>
+                        <div class="accordion-content px-6 bg-brand-black/50">
+                            <p class="pb-5 text-brand-gray text-sm leading-relaxed">
+                                Absolutely! Our mobile service is 100% free. We come to your home, workplace, or any location you prefer at no additional charge. The price you're quoted is the price you pay — no hidden fees, no trip charges.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="bg-brand-card rounded-xl border-l-2 border-brand-gold border-y border-r border-[#222] overflow-hidden">
+                        <button class="faq-btn w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none">
+                            <span class="font-bold text-white pr-4">How long does installation take, and when can I drive my car?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-brand-gold flex-shrink-0 transition-transform duration-300"></i>
+                        </button>
+                        <div class="accordion-content px-6 bg-brand-black/50">
+                            <p class="pb-5 text-brand-gray text-sm leading-relaxed">
+                                Most windshield replacements take 45-60 minutes. After installation, we recommend waiting at least one hour before driving to allow the adhesive to cure properly. Our fast-cure adhesive technology means you'll be back on the road sooner than with most competitors.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="bg-brand-card rounded-xl border-l-2 border-brand-gold border-y border-r border-[#222] overflow-hidden">
+                        <button class="faq-btn w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none">
+                            <span class="font-bold text-white pr-4">What is ADAS calibration, and why is it mandatory?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-brand-gold flex-shrink-0 transition-transform duration-300"></i>
+                        </button>
+                        <div class="accordion-content px-6 bg-brand-black/50">
+                            <p class="pb-5 text-brand-gray text-sm leading-relaxed">
+                                ADAS (Advanced Driver-Assistance Systems) includes features like lane-keeping assist, automatic emergency braking, and adaptive cruise control. These systems rely on cameras and sensors mounted near or on your windshield. After replacement, these sensors must be recalibrated to ensure they function correctly and keep you safe.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="bg-brand-card rounded-xl border-l-2 border-brand-gold border-y border-r border-[#222] overflow-hidden">
+                        <button class="faq-btn w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none">
+                            <span class="font-bold text-white pr-4">Do you work with my insurance policy?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-brand-gold flex-shrink-0 transition-transform duration-300"></i>
+                        </button>
+                        <div class="accordion-content px-6 bg-brand-black/50">
+                            <p class="pb-5 text-brand-gray text-sm leading-relaxed">
+                                Yes! We work with all major insurance providers including State Farm, GEICO, Progressive, Allstate, USAA, and many more. We handle the entire claims process for you, and in most cases, your windshield replacement is fully covered with zero out-of-pocket cost.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 9. FOOTER -->
+    <footer class="bg-brand-footer border-t-4 border-brand-gold pt-16 pb-8">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <!-- Col 1 -->
+                <div>
+                    <img src="Imagenes/Logo workproautoglass.png" alt="WorkPro AutoGlass" class="h-10 mb-6 object-contain" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCAyMDAgNDAiPjx0ZXh0IHk9IjI1IiBmb250LWZhbWlseT0iTW9udHNlcnJhdCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI0Q0QUYzNyI+V29ya1BybyBBdXRvR2xhc3M8L3RleHQ+PC9zdmc+'">
+                    <p class="text-sm text-brand-gray mb-6">Premium mobile auto glass replacement and repair services. We bring the shop to you with OEM-quality materials and expert installation.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-brand-black border border-[#333] flex items-center justify-center text-white hover:text-brand-gold hover:border-brand-gold transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-brand-black border border-[#333] flex items-center justify-center text-white hover:text-brand-gold hover:border-brand-gold transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-brand-black border border-[#333] flex items-center justify-center text-white hover:text-brand-gold hover:border-brand-gold transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2 -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6 text-white">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-brand-gray">
+                        <li><a href="#services" class="hover:text-brand-gold transition">Services</a></li>
+                        <li><a href="#mobile-service" class="hover:text-brand-gold transition">Mobile Service</a></li>
+                        <li><a href="#fleets" class="hover:text-brand-gold transition">Fleet Programs</a></li>
+                        <li><a href="#reviews" class="hover:text-brand-gold transition">Reviews</a></li>
+                        <li><a href="#faq" class="hover:text-brand-gold transition">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6 text-white">Services</h4>
+                    <ul class="space-y-3 text-sm text-brand-gray">
+                        <li><a href="#" class="hover:text-brand-gold transition">Windshield Replacement</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Chip Repair</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">ADAS Calibration</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Sunroof & Panoramic</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Commercial Fleets</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4 -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6 text-white">Contact Us</h4>
+                    <ul class="space-y-4 text-sm text-brand-gray">
+                        <li>
+                            <a href="tel:+18017503664" class="flex items-start gap-3 hover:text-brand-gold transition">
+                                <i data-lucide="phone" class="w-5 h-5 text-brand-gold flex-shrink-0"></i>
+                                <span>(801) 750-3664</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://wa.me/18017503664" target="_blank" class="flex items-start gap-3 hover:text-brand-gold transition">
+                                <i data-lucide="message-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span>WhatsApp Us</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:info@workproautoglass.com" class="flex items-start gap-3 hover:text-brand-gold transition">
+                                <i data-lucide="mail" class="w-5 h-5 text-brand-gold flex-shrink-0"></i>
+                                <span>info@workproautoglass.com</span>
+                            </a>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-brand-gold flex-shrink-0 mt-0.5"></i>
+                            <span>Serving the Greater Salt Lake City Area, UT</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-[#222] pt-8 mt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-brand-gray">
+                <p>&copy; 2024 WorkPro AutoGlass. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-brand-gold transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-brand-gold transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Floating CTA -->
+    <div class="lg:hidden fixed bottom-6 right-6 z-40">
+        <a href="tel:+18017503664" class="w-14 h-14 bg-[#39FF14] rounded-full flex items-center justify-center text-black shadow-lg pulse-green-btn hover:scale-110 transition-transform">
+            <i data-lucide="phone" class="w-6 h-6 fill-current"></i>
+        </a>
+    </div>
+
+    <!-- JAVASCRIPT FUNCTIONALITY -->
+    <script>
+        // 1. Initialize Lucide Icons
+        lucide.createIcons();
+
+        // 2. Populate Years dynamically
+        const yearSelect = document.getElementById('year-select');
+        if(yearSelect) {
+            const currentYear = 2026;
+            for (let i = currentYear; i >= 2000; i--) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = i;
+                yearSelect.appendChild(option);
+            }
+        }
+
+        // 3. Sticky Header
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+            
+            // Timeline animation for desktop
+            const timelineLine = document.getElementById('timeline-line');
+            if (timelineLine) {
+                const rect = timelineLine.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                    timelineLine.style.transform = 'scaleX(1)';
+                }
+            }
+        });
+
+        // 4. Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('translate-x-full');
+                mobileMenuBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
+            } else {
+                mobileMenu.classList.add('translate-x-full');
+                mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+            }
+            lucide.createIcons();
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if(isMenuOpen) toggleMenu();
+            });
+        });
+
+        // 5. FAQ Accordion
+        const faqBtns = document.querySelectorAll('.faq-btn');
+        faqBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                const isOpen = content.style.maxHeight;
+
+                // Close all other
+                document.querySelectorAll('.accordion-content').forEach(c => {
+                    c.style.maxHeight = null;
+                });
+                document.querySelectorAll('.faq-btn i').forEach(i => {
+                    i.style.transform = 'rotate(0deg)';
+                });
+
+                // Open clicked if it was closed
+                if (!isOpen) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // 6. Scroll Animations (Intersection Observer)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 7. Smooth Scroll for Anchor Links (handled by Tailwind class scroll-smooth on html, but adding fallback)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
