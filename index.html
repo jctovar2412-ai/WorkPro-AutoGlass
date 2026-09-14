@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WorkPro AutoGlass - Premium Mobile Windshield Replacement & Repair</title>
     
+    <!-- Favicon / Browser Tab Logo -->
+    <link rel="icon" type="image/png" href="Imagenes/Logo workproautoglass.png">
+    <link rel="apple-touch-icon" href="Imagenes/Logo workproautoglass.png">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +19,11 @@
     
     <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Flatpickr Date Picker CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://npmcdn.flatpickr/dist/themes/dark.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     
     <!-- Tailwind Configuration -->
     <script>
@@ -828,17 +837,48 @@
                                 <input type="text" placeholder="Street Address, City, State, Zip" class="w-full form-input rounded-xl px-4 py-3.5 text-sm focus:ring-1 focus:ring-brand-gold bg-[#111] border border-[#333] text-white" required>
                             </div>
 
-                            <!-- Preferred Date & Time -->
+                            <!-- Preferred Date (Dynamic Calendar) -->
                             <div>
-                                <label class="block text-xs font-semibold text-brand-gray uppercase tracking-wider mb-2">Preferred Date & Time *</label>
-                                <input type="datetime-local" class="w-full form-input rounded-xl px-4 py-3.5 text-sm focus:ring-1 focus:ring-brand-gold bg-[#111] border border-[#333] text-white" required>
+                                <label class="block text-xs font-semibold text-brand-gray uppercase tracking-wider mb-2">Preferred Date (Calendario) *</label>
+                                <div class="relative">
+                                    <input type="text" id="appointment-date" placeholder="Select Date" class="w-full form-input rounded-xl pl-11 pr-4 py-3.5 text-sm focus:ring-1 focus:ring-brand-gold bg-[#111] border border-[#333] text-white cursor-pointer" required>
+                                    <div class="absolute left-4 top-1/2 transform -translate-y-1/2 text-brand-gold pointer-events-none">
+                                        <i data-lucide="calendar" class="w-5 h-5"></i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Service Details / Notes -->
-                        <div>
-                            <label class="block text-xs font-semibold text-brand-gray uppercase tracking-wider mb-2">Vehicle & Additional Notes (Optional)</label>
-                            <textarea rows="3" placeholder="Specify vehicle Year/Make/Model, windshield condition, or special arrival instructions..." class="w-full form-input rounded-xl px-4 py-3.5 text-sm focus:ring-1 focus:ring-brand-gold bg-[#111] border border-[#333] text-white"></textarea>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Preferred Time Slot (Dynamic Clock / Reloj) -->
+                            <div>
+                                <label class="block text-xs font-semibold text-brand-gray uppercase tracking-wider mb-2">Preferred Time Slot (Reloj / Horario) *</label>
+                                <div class="relative">
+                                    <select id="appointment-time" class="w-full form-input rounded-xl pl-11 pr-4 py-3.5 text-sm focus:ring-1 focus:ring-brand-gold bg-[#111] border border-[#333] text-white cursor-pointer" required>
+                                        <option value="" disabled selected>Select Time Slot</option>
+                                        <option value="08:00 AM - 09:00 AM">8:00 AM - 9:00 AM (Morning)</option>
+                                        <option value="09:00 AM - 10:00 AM">9:00 AM - 10:00 AM (Morning)</option>
+                                        <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM (Morning)</option>
+                                        <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM (Midday)</option>
+                                        <option value="12:00 PM - 01:00 PM">12:00 PM - 1:00 PM (Afternoon)</option>
+                                        <option value="01:00 PM - 02:00 PM">1:00 PM - 2:00 PM (Afternoon)</option>
+                                        <option value="02:00 PM - 03:00 PM">2:00 PM - 3:00 PM (Afternoon)</option>
+                                        <option value="03:00 PM - 04:00 PM">3:00 PM - 4:00 PM (Late Afternoon)</option>
+                                        <option value="04:00 PM - 05:00 PM">4:00 PM - 5:00 PM (Evening)</option>
+                                        <option value="05:00 PM - 06:00 PM">5:00 PM - 6:00 PM (Evening)</option>
+                                        <option value="06:00 PM - 07:00 PM">6:00 PM - 7:00 PM (Evening)</option>
+                                    </select>
+                                    <div class="absolute left-4 top-1/2 transform -translate-y-1/2 text-brand-gold pointer-events-none">
+                                        <i data-lucide="clock" class="w-5 h-5"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Service Details / Notes -->
+                            <div>
+                                <label class="block text-xs font-semibold text-brand-gray uppercase tracking-wider mb-2">Vehicle & Additional Notes (Optional)</label>
+                                <textarea rows="2" placeholder="Vehicle Year/Make/Model, windshield details..." class="w-full form-input rounded-xl px-4 py-3 text-sm focus:ring-1 focus:ring-brand-gold bg-[#111] border border-[#333] text-white"></textarea>
+                            </div>
                         </div>
 
                         <!-- Submit Button -->
@@ -1064,6 +1104,22 @@
                 }
             });
         });
+
+        // 8. Flatpickr Dynamic Date Picker Initialization
+        if (typeof flatpickr !== 'undefined') {
+            flatpickr("#appointment-date", {
+                minDate: "today",
+                dateFormat: "Y-m-d",
+                altInput: true,
+                altFormat: "F j, Y",
+                disable: [
+                    function(date) {
+                        // Closed on Sundays
+                        return (date.getDay() === 0);
+                    }
+                ]
+            });
+        }
     </script>
 </body>
 </html>
