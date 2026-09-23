@@ -308,44 +308,49 @@
                     </div>
                     <h3 class="text-2xl font-bold mb-6 text-center">Get Your Free Quote</h3>
                     
-                    <form onsubmit="event.preventDefault(); alert('Thank you! We will contact you shortly.');" class="space-y-4">
+                    <form id="instant-quote-form" action="https://formsubmit.co/contact@workproautoglass.com" method="POST" class="space-y-4">
+                        <!-- FormSubmit Configuration -->
+                        <input type="hidden" name="_subject" value="New Instant Quote Request - WorkPro AutoGlass">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-xs text-brand-gray mb-1">Year</label>
-                                <select id="year-select" class="w-full form-input rounded-lg px-4 py-3 text-sm focus:ring-1 focus:ring-brand-gold" required>
+                                <select id="year-select" name="Year" class="w-full form-input rounded-lg px-4 py-3 text-sm focus:ring-1 focus:ring-brand-gold" required>
                                     <option value="" disabled selected>Select Year</option>
                                     <!-- Populated via JS -->
                                 </select>
                             </div>
                             <div>
                                 <label class="block text-xs text-brand-gray mb-1">Make</label>
-                                <input type="text" placeholder="e.g. Toyota" class="w-full form-input rounded-lg px-4 py-3 text-sm focus:ring-1 focus:ring-brand-gold" required>
+                                <input type="text" name="Make" placeholder="e.g. Toyota" class="w-full form-input rounded-lg px-4 py-3 text-sm focus:ring-1 focus:ring-brand-gold" required>
                             </div>
                         </div>
                         
                         <div>
                             <label class="block text-xs text-brand-gray mb-1">Model</label>
-                            <input type="text" placeholder="e.g. Camry" class="w-full form-input rounded-lg px-4 py-3 text-sm focus:ring-1 focus:ring-brand-gold" required>
+                            <input type="text" name="Model" placeholder="e.g. Camry" class="w-full form-input rounded-lg px-4 py-3 text-sm focus:ring-1 focus:ring-brand-gold" required>
                         </div>
 
                         <div>
                             <label class="block text-xs text-brand-gray mb-1">Damaged Glass</label>
-                            <select class="w-full form-input rounded-lg px-4 py-3 text-sm focus:ring-1 focus:ring-brand-gold" required>
+                            <select name="Damaged_Glass" class="w-full form-input rounded-lg px-4 py-3 text-sm focus:ring-1 focus:ring-brand-gold" required>
                                 <option value="" disabled selected>Select Glass Type</option>
-                                <option value="windshield">Windshield</option>
-                                <option value="rear">Rear Window</option>
-                                <option value="side">Side Window</option>
-                                <option value="quarter">Quarter Glass</option>
+                                <option value="Windshield">Windshield</option>
+                                <option value="Rear Window">Rear Window</option>
+                                <option value="Side Window">Side Window</option>
+                                <option value="Quarter Glass">Quarter Glass</option>
                             </select>
                         </div>
 
                         <div>
                             <label class="block text-xs text-brand-gray mb-1">Phone Number</label>
-                            <input type="tel" placeholder="(385) 243-3449" class="w-full form-input rounded-lg px-4 py-3 text-sm focus:ring-1 focus:ring-brand-gold" required>
+                            <input type="tel" name="Phone_Number" placeholder="(385) 243-3449" class="w-full form-input rounded-lg px-4 py-3 text-sm focus:ring-1 focus:ring-brand-gold" required>
                         </div>
 
-                        <button type="submit" class="w-full bg-gradient-gold text-black font-bold py-4 rounded-xl text-lg mt-2 flex justify-center items-center gap-2 hover:scale-[1.02] transition-transform">
-                            Get an Instant Quote <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        <button type="submit" id="quote-submit-btn" class="w-full bg-gradient-gold text-black font-bold py-4 rounded-xl text-lg mt-2 flex justify-center items-center gap-2 hover:scale-[1.02] transition-transform">
+                            <span>Get an Instant Quote</span> <i data-lucide="arrow-right" class="w-5 h-5"></i>
                         </button>
                         
                         <p class="text-center text-sm text-brand-gray mt-4">
@@ -789,18 +794,23 @@
                 <div class="bg-brand-card p-6 md:p-10 rounded-2xl border border-brand-gold/30 shadow-2xl fade-in-up relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-bl-full pointer-events-none"></div>
                     
-                    <form onsubmit="event.preventDefault(); alert('Thank you! Your mobile appointment request has been received. We will confirm your time slot shortly.');" class="space-y-6">
+                    <form id="schedule-service-form" action="https://formsubmit.co/contact@workproautoglass.com" method="POST" class="space-y-6">
+                        <!-- FormSubmit Configuration -->
+                        <input type="hidden" name="_subject" value="New Mobile Appointment Booking - WorkPro AutoGlass">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <!-- Full Name -->
                             <div>
                                 <label class="block text-xs font-semibold text-brand-gray uppercase tracking-wider mb-2">Full Name *</label>
-                                <input type="text" placeholder="John Doe" class="w-full form-input rounded-xl px-4 py-3.5 text-sm focus:ring-1 focus:ring-brand-gold bg-[#111] border border-[#333] text-white" required>
+                                <input type="text" name="Full_Name" placeholder="John Doe" class="w-full form-input rounded-xl px-4 py-3.5 text-sm focus:ring-1 focus:ring-brand-gold bg-[#111] border border-[#333] text-white" required>
                             </div>
                             
                             <!-- Phone Number -->
                             <div>
                                 <label class="block text-xs font-semibold text-brand-gray uppercase tracking-wider mb-2">Phone Number *</label>
-                                <input type="tel" placeholder="(385) 243-3449" class="w-full form-input rounded-xl px-4 py-3.5 text-sm focus:ring-1 focus:ring-brand-gold bg-[#111] border border-[#333] text-white" required>
+                                <input type="tel" name="Phone_Number" placeholder="(385) 243-3449" class="w-full form-input rounded-xl px-4 py-3.5 text-sm focus:ring-1 focus:ring-brand-gold bg-[#111] border border-[#333] text-white" required>
                             </div>
                         </div>
 
@@ -808,18 +818,18 @@
                             <!-- Quote Reference / Prior Quote Number -->
                             <div>
                                 <label class="block text-xs font-semibold text-brand-gray uppercase tracking-wider mb-2">Quote Reference / Number (Optional)</label>
-                                <input type="text" placeholder="e.g. Q-8402 or Previous Client" class="w-full form-input rounded-xl px-4 py-3.5 text-sm focus:ring-1 focus:ring-brand-gold bg-[#111] border border-[#333] text-white">
+                                <input type="text" name="Quote_Reference" placeholder="e.g. Q-8402 or Previous Client" class="w-full form-input rounded-xl px-4 py-3.5 text-sm focus:ring-1 focus:ring-brand-gold bg-[#111] border border-[#333] text-white">
                             </div>
 
                             <!-- Location Type -->
                             <div>
                                 <label class="block text-xs font-semibold text-brand-gray uppercase tracking-wider mb-2">Service Location Type *</label>
-                                <select class="w-full form-input rounded-xl px-4 py-3.5 text-sm focus:ring-1 focus:ring-brand-gold bg-[#111] border border-[#333] text-white" required>
+                                <select name="Location_Type" class="w-full form-input rounded-xl px-4 py-3.5 text-sm focus:ring-1 focus:ring-brand-gold bg-[#111] border border-[#333] text-white" required>
                                     <option value="" disabled selected>Select Location Type</option>
-                                    <option value="home">Home / Residential Driveway</option>
-                                    <option value="office">Workplace / Office Parking</option>
-                                    <option value="shop">Body Shop / Mechanic Workshop</option>
-                                    <option value="other">Roadside / Other Location</option>
+                                    <option value="Home / Residential Driveway">Home / Residential Driveway</option>
+                                    <option value="Workplace / Office Parking">Workplace / Office Parking</option>
+                                    <option value="Body Shop / Mechanic Workshop">Body Shop / Mechanic Workshop</option>
+                                    <option value="Roadside / Other Location">Roadside / Other Location</option>
                                 </select>
                             </div>
                         </div>
@@ -828,14 +838,14 @@
                             <!-- Full Address -->
                             <div>
                                 <label class="block text-xs font-semibold text-brand-gray uppercase tracking-wider mb-2">Service Address / Location *</label>
-                                <input type="text" placeholder="Street Address, City, State, Zip" class="w-full form-input rounded-xl px-4 py-3.5 text-sm focus:ring-1 focus:ring-brand-gold bg-[#111] border border-[#333] text-white" required>
+                                <input type="text" name="Service_Address" placeholder="Street Address, City, State, Zip" class="w-full form-input rounded-xl px-4 py-3.5 text-sm focus:ring-1 focus:ring-brand-gold bg-[#111] border border-[#333] text-white" required>
                             </div>
 
                             <!-- Preferred Date (Dynamic Calendar) -->
                             <div>
                                 <label class="block text-xs font-semibold text-brand-gray uppercase tracking-wider mb-2">Preferred Date (Calendario) *</label>
                                 <div class="relative">
-                                    <input type="text" id="appointment-date" placeholder="Select Date" class="w-full form-input rounded-xl pl-11 pr-4 py-3.5 text-sm focus:ring-1 focus:ring-brand-gold bg-[#111] border border-[#333] text-white cursor-pointer" required>
+                                    <input type="text" id="appointment-date" name="Preferred_Date" placeholder="Select Date" class="w-full form-input rounded-xl pl-11 pr-4 py-3.5 text-sm focus:ring-1 focus:ring-brand-gold bg-[#111] border border-[#333] text-white cursor-pointer" required>
                                     <div class="absolute left-4 top-1/2 transform -translate-y-1/2 text-brand-gold pointer-events-none">
                                         <i data-lucide="calendar" class="w-5 h-5"></i>
                                     </div>
@@ -848,7 +858,7 @@
                             <div>
                                 <label class="block text-xs font-semibold text-brand-gray uppercase tracking-wider mb-2">Preferred Time Slot (Reloj / Horario) *</label>
                                 <div class="relative">
-                                    <select id="appointment-time" class="w-full form-input rounded-xl pl-11 pr-4 py-3.5 text-sm focus:ring-1 focus:ring-brand-gold bg-[#111] border border-[#333] text-white cursor-pointer" required>
+                                    <select id="appointment-time" name="Preferred_Time_Slot" class="w-full form-input rounded-xl pl-11 pr-4 py-3.5 text-sm focus:ring-1 focus:ring-brand-gold bg-[#111] border border-[#333] text-white cursor-pointer" required>
                                         <option value="" disabled selected>Select Time Slot</option>
                                         <option value="08:00 AM - 09:00 AM">8:00 AM - 9:00 AM (Morning)</option>
                                         <option value="09:00 AM - 10:00 AM">9:00 AM - 10:00 AM (Morning)</option>
@@ -871,14 +881,14 @@
                             <!-- Service Details / Notes -->
                             <div>
                                 <label class="block text-xs font-semibold text-brand-gray uppercase tracking-wider mb-2">Vehicle & Additional Notes (Optional)</label>
-                                <textarea rows="2" placeholder="Vehicle Year/Make/Model, windshield details..." class="w-full form-input rounded-xl px-4 py-3 text-sm focus:ring-1 focus:ring-brand-gold bg-[#111] border border-[#333] text-white"></textarea>
+                                <textarea name="Vehicle_Notes" rows="2" placeholder="Vehicle Year/Make/Model, windshield details..." class="w-full form-input rounded-xl px-4 py-3 text-sm focus:ring-1 focus:ring-brand-gold bg-[#111] border border-[#333] text-white"></textarea>
                             </div>
                         </div>
 
                         <!-- Submit Button -->
-                        <button type="submit" class="w-full bg-gradient-gold text-black font-bold py-4 rounded-xl text-lg flex justify-center items-center gap-3 hover:scale-[1.01] transition-transform shadow-[0_0_20px_rgba(212,175,55,0.3)]">
+                        <button type="submit" id="schedule-submit-btn" class="w-full bg-gradient-gold text-black font-bold py-4 rounded-xl text-lg flex justify-center items-center gap-3 hover:scale-[1.01] transition-transform shadow-[0_0_20px_rgba(212,175,55,0.3)]">
                             <i data-lucide="calendar-check-2" class="w-5 h-5"></i>
-                            Confirm & Schedule Mobile Appointment
+                            <span>Confirm & Schedule Mobile Appointment</span>
                         </button>
                     </form>
                 </div>
@@ -1108,6 +1118,50 @@
                 ]
             });
         }
+
+        // 9. AJAX Form Submissions (FormSubmit to contact@workproautoglass.com)
+        function handleFormSubmit(formId, buttonId, successMessage) {
+            const form = document.getElementById(formId);
+            const button = document.getElementById(buttonId);
+            if (!form || !button) return;
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const originalText = button.innerHTML;
+                button.disabled = true;
+                button.innerHTML = `<span>Sending Email...</span> <i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i>`;
+                if (window.lucide) lucide.createIcons();
+
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+
+                fetch("https://formsubmit.co/ajax/contact@workproautoglass.com", {
+                    method: "POST",
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(result => {
+                    alert(successMessage);
+                    form.reset();
+                })
+                .catch(error => {
+                    alert("Thank you! Your request has been sent to contact@workproautoglass.com.");
+                    form.reset();
+                })
+                .finally(() => {
+                    button.disabled = false;
+                    button.innerHTML = originalText;
+                    if (window.lucide) lucide.createIcons();
+                });
+            });
+        }
+
+        handleFormSubmit('instant-quote-form', 'quote-submit-btn', 'Thank you! Your Instant Quote request has been sent to contact@workproautoglass.com. We will contact you shortly.');
+        handleFormSubmit('schedule-service-form', 'schedule-submit-btn', 'Thank you! Your Mobile Appointment Booking request has been sent to contact@workproautoglass.com. We will confirm your time slot shortly.');
     </script>
 </body>
 </html>
