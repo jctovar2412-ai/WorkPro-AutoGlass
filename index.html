@@ -20,6 +20,9 @@
     <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
+    <!-- SmtpJS CDN for Hostinger SMTP Email Sending -->
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    
     <!-- Flatpickr Date Picker CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://npmcdn.flatpickr/dist/themes/dark.css">
@@ -1119,8 +1122,8 @@
             });
         }
 
-        // 9. AJAX Form Submissions (FormSubmit to contact@workproautoglass.com)
-        function handleFormSubmit(formId, buttonId, successMessage) {
+        // 9. Direct Hostinger SMTP Email Submissions (from joseluis@workproautoglass.com)
+        function handleFormSubmit(formId, buttonId, successMessage, subjectTitle) {
             const form = document.getElementById(formId);
             const button = document.getElementById(buttonId);
             if (!form || !button) return;
@@ -1133,35 +1136,61 @@
                 if (window.lucide) lucide.createIcons();
 
                 const formData = new FormData(form);
-                const data = Object.fromEntries(formData.entries());
+                let emailTable = `<h2 style="color: #D4AF37;">${subjectTitle}</h2><table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; width: 100%; max-width: 600px;">`;
+                
+                for (let [key, value] of formData.entries()) {
+                    if (!key.startsWith('_')) {
+                        const label = key.replace(/_/g, ' ');
+                        emailTable += `<tr><td style="background: #f4f4f4; font-weight: bold; width: 40%;">${label}</td><td>${value}</td></tr>`;
+                    }
+                }
+                emailTable += `</table><p style="color: #888; font-size: 12px; margin-top: 15px;">Sent officially from WorkPro AutoGlass via joseluis@workproautoglass.com</p>`;
 
-                fetch("https://formsubmit.co/ajax/contact@workproautoglass.com", {
-                    method: "POST",
-                    headers: { 
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                })
-                .then(response => response.json())
-                .then(result => {
-                    alert(successMessage);
-                    form.reset();
-                })
-                .catch(error => {
-                    alert("Thank you! Your request has been sent to contact@workproautoglass.com.");
-                    form.reset();
-                })
-                .finally(() => {
-                    button.disabled = false;
-                    button.innerHTML = originalText;
-                    if (window.lucide) lucide.createIcons();
-                });
+                function sendFallback() {
+                    const data = Object.fromEntries(formData.entries());
+                    fetch("https://formsubmit.co/ajax/contact@workproautoglass.com", {
+                        method: "POST",
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: JSON.stringify(data)
+                    }).finally(() => {
+                        alert(successMessage);
+                        form.reset();
+                        button.disabled = false;
+                        button.innerHTML = originalText;
+                        if (window.lucide) lucide.createIcons();
+                    });
+                }
+
+                if (typeof Email !== 'undefined') {
+                    Email.send({
+                        Host: "smtp.hostinger.com",
+                        Username: "joseluis@workproautoglass.com",
+                        Password: "JoseLuis2026**",
+                        To: "contact@workproautoglass.com",
+                        From: "joseluis@workproautoglass.com",
+                        Subject: subjectTitle,
+                        Body: emailTable
+                    }).then(message => {
+                        if (message === "OK" || message.includes("OK")) {
+                            alert(successMessage);
+                            form.reset();
+                            button.disabled = false;
+                            button.innerHTML = originalText;
+                            if (window.lucide) lucide.createIcons();
+                        } else {
+                            sendFallback();
+                        }
+                    }).catch(err => {
+                        sendFallback();
+                    });
+                } else {
+                    sendFallback();
+                }
             });
         }
 
-        handleFormSubmit('instant-quote-form', 'quote-submit-btn', 'Thank you! Your Instant Quote request has been sent to contact@workproautoglass.com. We will contact you shortly.');
-        handleFormSubmit('schedule-service-form', 'schedule-submit-btn', 'Thank you! Your Mobile Appointment Booking request has been sent to contact@workproautoglass.com. We will confirm your time slot shortly.');
+        handleFormSubmit('instant-quote-form', 'quote-submit-btn', 'Thank you! Your Instant Quote request has been sent to contact@workproautoglass.com.', 'New Instant Quote Request - WorkPro AutoGlass');
+        handleFormSubmit('schedule-service-form', 'schedule-submit-btn', 'Thank you! Your Mobile Appointment Booking request has been sent to contact@workproautoglass.com.', 'New Mobile Appointment Booking - WorkPro AutoGlass');
     </script>
 </body>
 </html>
