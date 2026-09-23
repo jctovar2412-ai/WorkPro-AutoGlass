@@ -1122,7 +1122,7 @@
             });
         }
 
-        // 9. Direct Hostinger SMTP Email Submissions (from joseluis@workproautoglass.com)
+        // 9. Direct Native Hostinger Email Submissions (via send-email.php)
         function handleFormSubmit(formId, buttonId, successMessage, subjectTitle) {
             const form = document.getElementById(formId);
             const button = document.getElementById(buttonId);
@@ -1136,56 +1136,36 @@
                 if (window.lucide) lucide.createIcons();
 
                 const formData = new FormData(form);
-                let emailTable = `<h2 style="color: #D4AF37;">${subjectTitle}</h2><table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-family: Arial, sans-serif; width: 100%; max-width: 600px;">`;
-                
-                for (let [key, value] of formData.entries()) {
-                    if (!key.startsWith('_')) {
-                        const label = key.replace(/_/g, ' ');
-                        emailTable += `<tr><td style="background: #f4f4f4; font-weight: bold; width: 40%;">${label}</td><td>${value}</td></tr>`;
-                    }
-                }
-                emailTable += `</table><p style="color: #888; font-size: 12px; margin-top: 15px;">Sent officially from WorkPro AutoGlass via joseluis@workproautoglass.com</p>`;
+                const data = Object.fromEntries(formData.entries());
+                data['_subject'] = subjectTitle;
 
-                function sendFallback() {
-                    const data = Object.fromEntries(formData.entries());
-                    fetch("https://formsubmit.co/ajax/contact@workproautoglass.com", {
-                        method: "POST",
-                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                        body: JSON.stringify(data)
-                    }).finally(() => {
+                fetch('./send-email.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.status === 'success') {
                         alert(successMessage);
                         form.reset();
-                        button.disabled = false;
-                        button.innerHTML = originalText;
-                        if (window.lucide) lucide.createIcons();
-                    });
-                }
-
-                if (typeof Email !== 'undefined') {
-                    Email.send({
-                        Host: "smtp.hostinger.com",
-                        Username: "joseluis@workproautoglass.com",
-                        Password: "JoseLuis2026**",
-                        To: "contact@workproautoglass.com",
-                        From: "joseluis@workproautoglass.com",
-                        Subject: subjectTitle,
-                        Body: emailTable
-                    }).then(message => {
-                        if (message === "OK" || message.includes("OK")) {
-                            alert(successMessage);
-                            form.reset();
-                            button.disabled = false;
-                            button.innerHTML = originalText;
-                            if (window.lucide) lucide.createIcons();
-                        } else {
-                            sendFallback();
-                        }
-                    }).catch(err => {
-                        sendFallback();
-                    });
-                } else {
-                    sendFallback();
-                }
+                    } else {
+                        alert('Your request was submitted successfully! We will contact you shortly.');
+                        form.reset();
+                    }
+                })
+                .catch(error => {
+                    console.error('Email error:', error);
+                    alert(successMessage);
+                    form.reset();
+                })
+                .finally(() => {
+                    button.disabled = false;
+                    button.innerHTML = originalText;
+                    if (window.lucide) lucide.createIcons();
+                });
             });
         }
 
